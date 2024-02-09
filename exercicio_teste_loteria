@@ -1,0 +1,20 @@
+import requests
+import json
+import statistics
+site = requests.get("http://loteriascaixa-api.herokuapp.com/api/megasena")
+numero = site.text
+
+
+texto = 'taqui'
+
+if texto not in numero:
+    try: 
+        arquivo = open("site.json","w")
+        arquivo.write(numero)
+    finally:
+        arquivo.close()
+
+
+with open("site.json","r") as arquivo:
+     numero = arquivo.read()
+     print(numero)
